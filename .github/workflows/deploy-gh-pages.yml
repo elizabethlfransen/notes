@@ -1,0 +1,46 @@
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-web:
+    name: Build Flutter Web
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Setup Flutter
+        uses: flutter-actions/setup-flutter@v4
+        with:
+          channel: stable
+          version: 3.29.3
+          cache: true
+          cache-sdk: true
+          cache-key: shared
+      - name: Setup just
+        uses: extractions/setup-just@v3
+        with:
+          just-version: '1.40.0'
+      - name: Build Flutter Web
+        run: just build -E gh-pages.env web
+      - name: Create Artifact
+        id: deployment
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/web/
+  deploy-gh-pages:
+    name: Deploy To GitHub Pages
+    runs-on: ubuntu-latest
+    needs:
+      - build-web
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
