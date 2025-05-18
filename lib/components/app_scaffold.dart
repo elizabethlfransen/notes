@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/routes.dart';
+import 'package:notes_app/settings.dart';
 
 class AppScaffold extends StatelessWidget {
   final Widget child;
+
   const AppScaffold({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         actions: [
           SafeArea(
             child: RawMaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                SettingsScreenRoute().go(context);
+              },
               shape: CircleBorder(),
               child: CircleAvatar(
                 backgroundColor: Colors.grey.shade300,
@@ -22,7 +26,7 @@ class AppScaffold extends StatelessWidget {
           ),
         ],
       ),
-      body: child,
+      body: SafeArea(minimum: EdgeInsets.all(8), child: child),
     );
   }
 }

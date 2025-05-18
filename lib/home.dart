@@ -9,6 +9,6 @@ class HomeScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     useAppTitle("Home", ref);
-    return Placeholder();
+    return Center(child: Text("Home"));
   }
 }
