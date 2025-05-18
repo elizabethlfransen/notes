@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/components/app_scaffold.dart' show AppScaffold;
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:notes_app/components/app_scaffold.dart';
+import 'package:notes_app/home.dart';
+import 'package:notes_app/services/app_title.dart';
+import 'package:notes_app/theme.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ProviderScope(child: const MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends HookConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final title = ref.watch(appTitleProvider);
+
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: title,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: AppScaffold(),
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      themeMode: ThemeMode.system,
+      home: AppScaffold(child: HomeScreen()),
     );
   }
 }
