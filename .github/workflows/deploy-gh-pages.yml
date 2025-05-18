@@ -23,7 +23,10 @@ jobs:
         with:
           just-version: '1.40.0'
       - name: Build Flutter Web
-        run: just build -E gh-pages.env web
+        uses: ./.github/actions/just
+        with:
+          recipes: build web
+          env: gh-pages
       - name: Create Artifact
         id: deployment
         uses: actions/upload-pages-artifact@v3
