@@ -8,7 +8,9 @@ import 'package:notes_app/services/app_title.dart';
 import 'package:notes_app/theme.dart';
 
 void main() {
-  usePathUrlStrategy();
+  if(String.fromEnvironment("ENVIRONMENT") != "gh-pages") {
+    usePathUrlStrategy();
+  }
   runApp(ProviderScope(child: const MyApp()));
 }
 
