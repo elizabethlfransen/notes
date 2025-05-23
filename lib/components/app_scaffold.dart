@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/routes.dart';
 
+import '../routes.dart';
 import 'user_profile_icon.dart';
 
 class AppScaffold extends StatelessWidget {
@@ -12,15 +12,15 @@ class AppScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actionsPadding: EdgeInsets.symmetric(horizontal: 16),
         actions: [
-          SafeArea(
-            child: RawMaterialButton(
-              onPressed: () {
-                SettingsScreenRoute().go(context);
-              },
-              shape: CircleBorder(),
-              child: UserProfileIcon(),
-            ),
+          RawMaterialButton(
+            constraints: BoxConstraints(minWidth: 36, minHeight: 36),
+            onPressed: () {
+              SettingsScreenRoute().go(context);
+            },
+            shape: CircleBorder(),
+            child: UserProfileIcon(),
           ),
         ],
       ),
