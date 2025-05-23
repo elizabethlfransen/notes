@@ -12,7 +12,7 @@ ThemeData _createBaseTheme(Brightness brightness) => ThemeData(
       color:
           brightness == Brightness.dark
               ? Colors.grey.shade400
-              : Colors.grey.shade600,
+              : Colors.grey.shade700,
     ),
   ),
 );

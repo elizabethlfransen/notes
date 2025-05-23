@@ -9,7 +9,7 @@ class UserProfileIcon extends StatelessWidget {
     return CircleAvatar(
       backgroundColor: isDarkMode ? Colors.grey.shade600 : Colors.grey.shade400,
       foregroundColor: isDarkMode ? Colors.black : Colors.white,
-      child: Icon(Icons.person),
+      child: Icon(Icons.person, semanticLabel: "Open Settings"),
     );
   }
 }

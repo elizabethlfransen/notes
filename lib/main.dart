@@ -1,3 +1,4 @@
+import 'package:accessibility_tools/accessibility_tools.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -28,6 +29,7 @@ class MyApp extends HookConsumerWidget {
       darkTheme: darkTheme,
       themeMode: themeMode.value ?? ThemeMode.system,
       routerConfig: router,
+      builder: (context, child) => AccessibilityTools(child: child),
     );
   }
 }
