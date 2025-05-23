@@ -6,6 +6,15 @@ ThemeData _createBaseTheme(Brightness brightness) => ThemeData(
     brightness: brightness,
   ),
   brightness: brightness,
+  textTheme: TextTheme(
+    labelLarge: TextStyle(
+      fontSize: 20,
+      color:
+          brightness == Brightness.dark
+              ? Colors.grey.shade400
+              : Colors.grey.shade600,
+    ),
+  ),
 );
 
 final ThemeData lightTheme = _createBaseTheme(Brightness.light);

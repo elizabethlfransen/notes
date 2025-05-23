@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/routes.dart';
-import 'package:notes_app/settings.dart';
+
+import 'user_profile_icon.dart';
 
 class AppScaffold extends StatelessWidget {
   final Widget child;
@@ -18,10 +19,7 @@ class AppScaffold extends StatelessWidget {
                 SettingsScreenRoute().go(context);
               },
               shape: CircleBorder(),
-              child: CircleAvatar(
-                backgroundColor: Colors.grey.shade300,
-                child: Icon(Icons.person),
-              ),
+              child: UserProfileIcon(),
             ),
           ),
         ],
